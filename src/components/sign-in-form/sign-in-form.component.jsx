@@ -1,8 +1,11 @@
 import { useState } from "react"; 
-import { signInWithGooglePopup, createUsertDocumentFromAuth, signInAuthWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 import FormInput from '../../components/form-input/form-input.component';
-import './sign-in-form.styles.scss';
 import Button from '../../components/button/button.component';
+import { 
+  signInWithGooglePopup, 
+  createUsertDocumentFromAuth, 
+  signInAuthWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
+import './sign-in-form.styles.scss';
 
 const defaultFormfields = {
   email: '',
@@ -13,23 +16,19 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormfields);
   const { email, password } = formFields;
 
-  // console.log(formFields);
-
   const resetFormFields = () => {
     setFormFields(defaultFormfields);
   };
 
   const SignInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUsertDocumentFromAuth(user)
+    await signInWithGooglePopup();
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try{
-      const response = await signInAuthWithEmailAndPassword(email, password);
-      console.log(response);
+      await signInAuthWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch(error.code){
