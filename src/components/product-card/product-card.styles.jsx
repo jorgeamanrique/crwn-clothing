@@ -21,6 +21,7 @@ export const ProductCartContainer = styled.div`
     position: absolute;
     top: 255px;
     display: none;
+    font-size: 12px;
   }
 
   &:hover {
