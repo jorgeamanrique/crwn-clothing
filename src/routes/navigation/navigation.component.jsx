@@ -15,6 +15,8 @@ import { NavigationContainer, LogoContainer, Navlinks, NavLink } from './navigat
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
   const { isCartOpen } = useContext(CartContext);
+  console.log(`Validar estado---> ${isCartOpen}`)
+  console.log(isCartOpen);
 
   return (
     <Fragment>
